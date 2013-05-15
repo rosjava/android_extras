@@ -1,7 +1,7 @@
 package org.ros.android.zeroconf.master_browser;
 
 import android.content.Context;
-import ros.zeroconf.jmdns.Zeroconf;
+import org.ros.zeroconf.jmdns.Zeroconf;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 

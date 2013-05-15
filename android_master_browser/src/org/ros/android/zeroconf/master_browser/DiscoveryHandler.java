@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
-import ros.zeroconf.jmdns.ZeroconfDiscoveryHandler;
-import org.ros.message.zeroconf_comms.DiscoveredService;
+import org.ros.zeroconf.jmdns.ZeroconfDiscoveryHandler;
 
 /**
  * This class is the callback handler for services being listened for
@@ -21,12 +20,12 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 	/*********************
 	 * Tasks
 	 ********************/
-	private class ServiceAddedTask extends AsyncTask<DiscoveredService, String, Void> {
+	private class ServiceAddedTask extends AsyncTask<zeroconf_msgs.DiscoveredService, String, Void> {
 		
-	    protected Void doInBackground(DiscoveredService... services) {
+	    protected Void doInBackground(zeroconf_msgs.DiscoveredService... services) {
 	        if ( services.length == 1 ) {
-	            DiscoveredService service = services[0];
-				String result = "[+] Service added: " + service.name + "." + service.type + "." + service.domain + ".";
+	            zeroconf_msgs.DiscoveredService service = services[0];
+				String result = "[+] Service added: " + service.getName() + "." + service.getType() + "." + service.getDomain() + ".";
 				publishProgress(result);
 	        } else {
 	            publishProgress("Error - ServiceAddedTask::doInBackground received #services != 1");
@@ -39,17 +38,17 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 		}
 	}
 
-	private class ServiceResolvedTask extends AsyncTask<DiscoveredService, String, DiscoveredService> {
+	private class ServiceResolvedTask extends AsyncTask<zeroconf_msgs.DiscoveredService, String, zeroconf_msgs.DiscoveredService> {
 		
-	    protected DiscoveredService doInBackground(DiscoveredService... services) {
+	    protected zeroconf_msgs.DiscoveredService doInBackground(zeroconf_msgs.DiscoveredService... services) {
 	        if ( services.length == 1 ) {
-	            DiscoveredService discovered_service = services[0];
-		    	String result = "[=] Service resolved: " + discovered_service.name + "." + discovered_service.type + "." + discovered_service.domain + ".\n";
-		    	result += "    Port: " + discovered_service.port;
-		    	for ( String address : discovered_service.ipv4_addresses ) {
+	            zeroconf_msgs.DiscoveredService discovered_service = services[0];
+		    	String result = "[=] Service resolved: " + discovered_service.getName() + "." + discovered_service.getType() + "." + discovered_service.getDomain() + ".\n";
+		    	result += "    Port: " + discovered_service.getPort();
+		    	for ( String address : discovered_service.getIpv4Addresses() ) {
 		    		result += "\n    Address: " + address;
 		    	}
-		    	for ( String address : discovered_service.ipv6_addresses ) {
+		    	for ( String address : discovered_service.getIpv6Addresses() ) {
 		    		result += "\n    Address: " + address;
 		    	}
 		    	publishProgress(result);
@@ -64,12 +63,12 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 	    	uiLog(progress);
 		}
 	    
-	    protected void onPostExecute(DiscoveredService discovered_service) {
+	    protected void onPostExecute(zeroconf_msgs.DiscoveredService discovered_service) {
 	    	// add to the content and notify the list view if its a new service
 	    	if ( discovered_service != null ) {
 				int index = 0;
-				for ( DiscoveredService s : discovered_services ) {
-					if ( s.name.equals(discovered_service.name) ) {
+				for ( zeroconf_msgs.DiscoveredService s : discovered_services ) {
+					if ( s.getName().equals(discovered_service.getName()) ) {
 						break;
 					} else {
 						++index;
@@ -85,17 +84,17 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 	    }
 	}
 	
-	private class ServiceRemovedTask extends AsyncTask<DiscoveredService, String, DiscoveredService> {
+	private class ServiceRemovedTask extends AsyncTask<zeroconf_msgs.DiscoveredService, String, zeroconf_msgs.DiscoveredService> {
 		
-	    protected DiscoveredService doInBackground(DiscoveredService... services) {
+	    protected zeroconf_msgs.DiscoveredService doInBackground(zeroconf_msgs.DiscoveredService... services) {
 	        if ( services.length == 1 ) {
-	            DiscoveredService discovered_service = services[0];
-	            String result = "[-] Service removed: " + discovered_service.name + "." + discovered_service.type + "." + discovered_service.domain + ".\n";
-	            result += "    Port: " + discovered_service.port;
-		    	for ( String address : discovered_service.ipv4_addresses ) {
+	            zeroconf_msgs.DiscoveredService discovered_service = services[0];
+	            String result = "[-] Service removed: " + discovered_service.getName() + "." + discovered_service.getType() + "." + discovered_service.getDomain() + ".\n";
+	            result += "    Port: " + discovered_service.getPort();
+		    	for ( String address : discovered_service.getIpv4Addresses() ) {
 		    		result += "\n    Address: " + address;
 		    	}
-		    	for ( String address : discovered_service.ipv6_addresses ) {
+		    	for ( String address : discovered_service.getIpv6Addresses() ) {
 		    		result += "\n    Address: " + address;
 		    	}
 		    	publishProgress(result);
@@ -110,12 +109,12 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 	    	uiLog(progress);
 		}
 	    
-	    protected void onPostExecute(DiscoveredService discovered_service) {
+	    protected void onPostExecute(zeroconf_msgs.DiscoveredService discovered_service) {
 	    	// remove service from storage and notify list view
 	    	if ( discovered_service != null ) {
 				int index = 0;
-				for ( DiscoveredService s : discovered_services ) {
-					if ( s.name.equals(discovered_service.name) ) {
+				for ( zeroconf_msgs.DiscoveredService s : discovered_services ) {
+					if ( s.getName().equals(discovered_service.getName()) ) {
 						break;
 					} else {
 						++index;
@@ -134,14 +133,14 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 	/*********************
 	 * Variables
 	 ********************/
-	private ArrayList<DiscoveredService> discovered_services;
+	private ArrayList<zeroconf_msgs.DiscoveredService> discovered_services;
     private DiscoveryAdapter discovery_adapter;
 	private TextView text_view;
 
 	/*********************
 	 * Constructors
 	 ********************/
-	public DiscoveryHandler(TextView tv, DiscoveryAdapter discovery_adapter, ArrayList<DiscoveredService> discovered_services) {
+	public DiscoveryHandler(TextView tv, DiscoveryAdapter discovery_adapter, ArrayList<zeroconf_msgs.DiscoveredService> discovered_services) {
 		this.text_view = tv;
 		this.discovery_adapter = discovery_adapter;
 		this.discovered_services = discovered_services;
@@ -150,15 +149,15 @@ public class DiscoveryHandler implements ZeroconfDiscoveryHandler {
 	/*********************
 	 * Callbacks
 	 ********************/
-	public void serviceAdded(DiscoveredService service) {
+	public void serviceAdded(zeroconf_msgs.DiscoveredService service) {
 		new ServiceAddedTask().execute(service);
 	}
 	
-	public void serviceRemoved(DiscoveredService service) {
+	public void serviceRemoved(zeroconf_msgs.DiscoveredService service) {
 		new ServiceRemovedTask().execute(service);
 	}
 	
-	public void serviceResolved(DiscoveredService service) {
+	public void serviceResolved(zeroconf_msgs.DiscoveredService service) {
 		new ServiceResolvedTask().execute(service);
 	}
 

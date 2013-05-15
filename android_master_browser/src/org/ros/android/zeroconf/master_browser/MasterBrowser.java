@@ -22,12 +22,11 @@ import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
 import org.ros.zeroconf.jmdns.Zeroconf;
 import org.ros.zeroconf.jmdns.ZeroconfDiscoveryHandler;
-import org.ros.android.zeroconf.Logger;
+import org.ros.android.zeroconf.master_browser.Logger;
 import org.ros.android.zeroconf.master_browser.R;
 import org.ros.android.zeroconf.master_browser.DiscoveryHandler;
 import org.ros.android.zeroconf.master_browser.DiscoveryAdapter;
 import org.ros.android.zeroconf.master_browser.DiscoverySetup;
-import org.ros.message.zeroconf_comms.DiscoveredService;
 
 // adb logcat System.out:I *:S
 // adb logcat zeroconf:I *:S
@@ -59,7 +58,7 @@ public class MasterBrowser extends Activity {
 	private Logger logger;
 	private TextView tv;
 	private ListView lv;
-	private ArrayList<DiscoveredService> discovered_services;
+	private ArrayList<zeroconf_msgs.DiscoveredService> discovered_services;
     private DiscoveryAdapter discovery_adapter;
 	private DiscoveryHandler discovery_handler;
 	
@@ -69,7 +68,7 @@ public class MasterBrowser extends Activity {
     {
         super.onCreate(savedInstanceState);
     	android.util.Log.i("zeroconf","*********** Zeroconf Create **************");
-        discovered_services = new ArrayList<DiscoveredService>();
+        discovered_services = new ArrayList<zeroconf_msgs.DiscoveredService>();
         setContentView(R.layout.main);
         lv = (ListView)findViewById(R.id.discovered_services_view);
         discovery_adapter = new DiscoveryAdapter(this, discovered_services);

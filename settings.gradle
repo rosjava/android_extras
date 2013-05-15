@@ -15,4 +15,4 @@
  */
 
 include 'android_barcode_scanner'
-/* include 'android_master_browser' */
+include 'android_master_browser'
