@@ -36,15 +36,11 @@ import org.ros.android.zeroconf.master_browser.DiscoverySetup;
  * (both xxx._tcp and xxx._udp):
  * 
  * - _ros-master  
- * - _concert-master
- * - _app-manager
  * 
  * Easiest way to test is to use avahi to publish/browse on the other end. In a linux shell:
  * 
  * @code
  * > avahi-publish -s DudeMaster _ros-master._tcp 8882
- * > avahi-publish -s ConcertMaster _concert-master._tcp 8883
- * > avahi-publish -s DudeMasterApps _app-manager._tcp 8884
  * @endcode
  *
  * Then run this program on your android while it is connected to the lan.
@@ -58,7 +54,7 @@ public class MasterBrowser extends Activity {
 	private Logger logger;
 	private TextView tv;
 	private ListView lv;
-	private ArrayList<zeroconf_msgs.DiscoveredService> discovered_services;
+	private ArrayList<ServiceInfo> discovered_services;
     private DiscoveryAdapter discovery_adapter;
 	private DiscoveryHandler discovery_handler;
 	
@@ -67,8 +63,9 @@ public class MasterBrowser extends Activity {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        logger = new Logger();
     	android.util.Log.i("zeroconf","*********** Zeroconf Create **************");
-        discovered_services = new ArrayList<zeroconf_msgs.DiscoveredService>();
+        discovered_services = new ArrayList<ServiceInfo>();
         setContentView(R.layout.main);
         lv = (ListView)findViewById(R.id.discovered_services_view);
         discovery_adapter = new DiscoveryAdapter(this, discovered_services);
@@ -77,11 +74,10 @@ public class MasterBrowser extends Activity {
         tv.setMovementMethod(new ScrollingMovementMethod());
         tv.setText("");
 
-        logger = new Logger();
 		zeroconf = new Zeroconf(logger);
 		discovery_handler = new DiscoveryHandler(tv, discovery_adapter, discovered_services);
 		zeroconf.setDefaultDiscoveryCallback(discovery_handler);
-		
+
 		new DiscoverySetup(this).execute(zeroconf);
     }
     
@@ -101,12 +97,8 @@ public class MasterBrowser extends Activity {
     @Override
     public void onDestroy() {
     	logger.println("*********** Zeroconf Destroy **************");
-//        zeroconf.removeListener("_ros-master._tcp","local");
-//	    zeroconf.removeListener("_ros-master._udp","local");
-//	    zeroconf.removeListener("_concert-master._tcp","local");
-//	    zeroconf.removeListener("_concert-master._udp","local");
-//	    zeroconf.removeListener("_app-manager._tcp","local");
-//	    zeroconf.removeListener("_app-manager._udp","local");
+        zeroconf.removeListener("_ros-master._tcp","local");
+	    zeroconf.removeListener("_ros-master._udp","local");
 	    try {
 	    	zeroconf.shutdown();
         } catch (IOException e) {
