@@ -13,12 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
-/*
- * External android dependencies are handled by catkin
- * and listed in project.properties. Only include here what
- * it depends on from this repo.
- */
-dependencies {
-  /* debug.dependsOn project(':android_apps_core_components').tasks.debug */
+apply plugin: 'android-library'
+  
+android {
+    compileSdkVersion 10
+    buildToolsVersion androidBuildToolsVersion
 }
+

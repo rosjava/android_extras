@@ -1,10 +1,9 @@
-package org.ros.android.zeroconf.master_browser;
+package com.github.rosjava.android.master_browser;
 
 import java.io.IOException;
 import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.List;
-import javax.jmdns.ServiceInfo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -20,13 +19,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
-import org.ros.zeroconf.jmdns.Zeroconf;
-import org.ros.zeroconf.jmdns.ZeroconfDiscoveryHandler;
-import org.ros.android.zeroconf.master_browser.Logger;
-import org.ros.android.zeroconf.master_browser.R;
-import org.ros.android.zeroconf.master_browser.DiscoveryHandler;
-import org.ros.android.zeroconf.master_browser.DiscoveryAdapter;
-import org.ros.android.zeroconf.master_browser.DiscoverySetup;
+import com.github.rosjava.jmdns.DiscoveredService;
+import com.github.rosjava.jmdns.Zeroconf;
+import com.github.rosjava.jmdns.ZeroconfDiscoveryHandler;
+import com.github.rosjava.android.master_browser.R;
+
+import com.github.rosjava.android.master_browser.DiscoveryAdapter;
+import com.github.rosjava.android.master_browser.DiscoveryHandler;
+import com.github.rosjava.android.master_browser.DiscoverySetup;
+import com.github.rosjava.android.master_browser.Logger;
 
 // adb logcat System.out:I *:S
 // adb logcat zeroconf:I *:S
@@ -54,7 +55,7 @@ public class MasterBrowser extends Activity {
 	private Logger logger;
 	private TextView tv;
 	private ListView lv;
-	private ArrayList<ServiceInfo> discovered_services;
+	private ArrayList<DiscoveredService> discovered_services;
     private DiscoveryAdapter discovery_adapter;
 	private DiscoveryHandler discovery_handler;
 	
@@ -65,7 +66,7 @@ public class MasterBrowser extends Activity {
         super.onCreate(savedInstanceState);
         logger = new Logger();
     	android.util.Log.i("zeroconf","*********** Zeroconf Create **************");
-        discovered_services = new ArrayList<ServiceInfo>();
+        discovered_services = new ArrayList<DiscoveredService>();
         setContentView(R.layout.main);
         lv = (ListView)findViewById(R.id.discovered_services_view);
         discovery_adapter = new DiscoveryAdapter(this, discovered_services);

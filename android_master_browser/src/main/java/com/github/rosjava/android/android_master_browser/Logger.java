@@ -1,7 +1,7 @@
-package org.ros.android.zeroconf.master_browser;
+package com.github.rosjava.android.master_browser;
 
 import java.lang.String;
-import org.ros.zeroconf.jmdns.ZeroconfLogger;
+import com.github.rosjava.jmdns.ZeroconfLogger;
 
 public class Logger implements ZeroconfLogger {
 

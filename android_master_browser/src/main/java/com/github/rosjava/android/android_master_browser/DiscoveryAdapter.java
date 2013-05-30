@@ -1,4 +1,4 @@
-package org.ros.android.zeroconf.master_browser;
+package com.github.rosjava.android.master_browser;
 
 import java.util.ArrayList;
 import android.content.Context;
@@ -8,16 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import javax.jmdns.ServiceInfo;
+
+import com.github.rosjava.android.master_browser.R;
+import com.github.rosjava.jmdns.DiscoveredService;
+
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 
-public class DiscoveryAdapter extends ArrayAdapter<ServiceInfo> {
+public class DiscoveryAdapter extends ArrayAdapter<DiscoveredService> {
 
 	private final Context context;
-	private ArrayList<ServiceInfo> discovered_services;
+	private ArrayList<DiscoveredService> discovered_services;
 
-    public DiscoveryAdapter(Context context, ArrayList<ServiceInfo> discovered_services) {
+    public DiscoveryAdapter(Context context, ArrayList<DiscoveredService> discovered_services) {
         super(context, R.layout.row_layout,discovered_services); // pass the list to the super
         this.context = context;
         this.discovered_services = discovered_services;  // keep a pointer locally so we can play with it
@@ -30,43 +33,36 @@ public class DiscoveryAdapter extends ArrayAdapter<ServiceInfo> {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.row_layout, null);
         }
-        ServiceInfo discovered_service = discovered_services.get(position);
+        DiscoveredService discovered_service = discovered_services.get(position);
         if (discovered_service != null) {
                 TextView tt = (TextView) v.findViewById(R.id.service_name);
                 TextView bt = (TextView) v.findViewById(R.id.service_detail);
                 if (tt != null) {
-                    tt.setText(discovered_service.getName());                            
+                    tt.setText(discovered_service.name);                            
                 }
                 if( bt != null ) {
                 	String result = "";
-                	for ( Inet4Address address : discovered_service.getInet4Addresses() ) {
+    		    	for ( String address : discovered_service.ipv4_addresses ) {
                 		if ( result.equals("") ) {
-                			result += address.getHostAddress() + ":" + discovered_service.getPort();
+                			result += address + ":" + discovered_service.port;
                 		} else { 
-                			result += "\n" + address.getHostAddress() + ":" + discovered_service.getPort();
+                			result += "\n" + address + ":" + discovered_service.port;
                 		}
                 	}
-                	for ( Inet6Address address : discovered_service.getInet6Addresses() ) {
+    		    	for ( String address : discovered_service.ipv6_addresses ) {
                 		if ( result.equals("") ) {
-                			result += address.getHostAddress() + ":" + discovered_service.getPort();
+                			result += address + ":" + discovered_service.port;
                 		} else { 
-                			result += "\n" + address.getHostAddress() + ":" + discovered_service.getPort();
+                			result += "\n" + address + ":" + discovered_service.port;
                 		}
                 	}
                     bt.setText(result);
                 }
                 ImageView im = (ImageView) v.findViewById(R.id.icon);
                 if ( im != null ) {
-            	    String type = discovered_service.getType();
-                	// getType() usually returns name, protocol and domain in jmdns, e.g.
-                	// _ros-master._tcp.local. Retrieve the name and protocol only for our purposes
-                	String[] everything = discovered_service.getType().split("\\.");
-                	if (everything.length > 1) {
-                	    type = everything[0] + "." + everything[1];
-	                	if ( type.equals("_ros-master._tcp" ) ||
-	                		 type.equals("_ros-master._udp" ) ) {
-	                    	im.setImageDrawable(context.getResources().getDrawable(R.drawable.turtle));
-	                	}
+                	if ( discovered_service.type.equals("_ros-master._tcp" ) ||
+                			discovered_service.type.equals("_ros-master._udp" ) ) {
+                    	im.setImageDrawable(context.getResources().getDrawable(R.drawable.turtle));
                 	} else {
                 		// unknown
                     	im.setImageDrawable(context.getResources().getDrawable(R.drawable.conductor));

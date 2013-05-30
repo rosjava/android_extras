@@ -14,11 +14,15 @@
  * the License.
  */
 
-/*
- * External android dependencies are handled by catkin
- * and listed in project.properties. Only include here what
- * it depends on from this repo.
- */
 dependencies {
-  compile 'ros.rosjava_core:rosjava_jmdns:0.1.0'
+  compile 'ros.rosjava_jmdns_suite:rosjava_jmdns:0.1.0'
+  compile 'ros.android_core:android_gingerbread_mr1:0.0.0-SNAPSHOT'
 }
+
+apply plugin: 'android'
+  
+android {
+    compileSdkVersion 10
+    buildToolsVersion androidBuildToolsVersion
+}
+
