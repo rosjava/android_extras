@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Daniel Stonier
+ * Copyright (C) 2013 Daniel Stonier.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,7 +14,22 @@
  * the License.
  */
 
-include 'android_zxing'
-include 'android_master_browser'
-include 'android_gingerbread_extras'
-include 'gingerbread'
+/* 
+ Examples of 
+   1) dependencies from another project in this gradle stack.
+   2) dependency from a maven repository.
+*/
+/* 
+dependencies {
+  compile project(':android_apps_core_components')
+  compile 'ros.android_core:android_gingerbread_mr1:0.0.0-SNAPSHOT'
+}
+*/
+
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 10
+    buildToolsVersion androidBuildToolsVersion
+}
+ 
