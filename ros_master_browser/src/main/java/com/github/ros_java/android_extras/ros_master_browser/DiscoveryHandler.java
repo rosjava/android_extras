@@ -1,4 +1,4 @@
-package com.github.rosjava.android.master_browser;
+package com.github.ros_java.android_extras.ros_master_browser;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -8,8 +8,8 @@ import java.util.Iterator;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
-import com.github.rosjava.jmdns.DiscoveredService;
-import com.github.rosjava.jmdns.ZeroconfDiscoveryHandler;
+import com.github.ros_java.jmdns.DiscoveredService;
+import com.github.ros_java.jmdns.ZeroconfDiscoveryHandler;
 
 /**
  * This class is the callback handler for services being listened for

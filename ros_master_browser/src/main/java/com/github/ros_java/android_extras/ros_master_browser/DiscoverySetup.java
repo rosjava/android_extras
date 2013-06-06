@@ -1,7 +1,7 @@
-package com.github.rosjava.android.master_browser;
+package com.github.ros_java.android_extras.ros_master_browser;
 
 import android.content.Context;
-import com.github.rosjava.jmdns.Zeroconf;
+import com.github.ros_java.jmdns.Zeroconf;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 

@@ -15,6 +15,6 @@
  */
 
 include 'android_zxing'
-include 'android_master_browser'
+include 'ros_master_browser'
 include 'android_gingerbread_extras'
 include 'gingerbread'

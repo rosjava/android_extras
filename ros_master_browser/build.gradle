@@ -15,7 +15,7 @@
  */
 
 dependencies {
-  compile 'ros.rosjava_jmdns_suite:rosjava_jmdns:0.1.0'
+  compile 'ros.rosjava_jmdns_suite:jmdns:0.1.0'
   compile 'ros.android_core:android_gingerbread_mr1:0.0.0-SNAPSHOT'
 }
 

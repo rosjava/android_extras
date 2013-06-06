@@ -1,4 +1,4 @@
-package com.github.rosjava.android.master_browser;
+package com.github.ros_java.android_extras.ros_master_browser;
 
 import java.io.IOException;
 import java.lang.Thread;
@@ -19,15 +19,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
-import com.github.rosjava.jmdns.DiscoveredService;
-import com.github.rosjava.jmdns.Zeroconf;
-import com.github.rosjava.jmdns.ZeroconfDiscoveryHandler;
-import com.github.rosjava.android.master_browser.R;
-
-import com.github.rosjava.android.master_browser.DiscoveryAdapter;
-import com.github.rosjava.android.master_browser.DiscoveryHandler;
-import com.github.rosjava.android.master_browser.DiscoverySetup;
-import com.github.rosjava.android.master_browser.Logger;
+import com.github.ros_java.jmdns.DiscoveredService;
+import com.github.ros_java.jmdns.Zeroconf;
+import com.github.ros_java.jmdns.ZeroconfDiscoveryHandler;
+import com.github.ros_java.android_extras.ros_master_browser.R;
+import com.github.ros_java.android_extras.ros_master_browser.DiscoveryAdapter;
+import com.github.ros_java.android_extras.ros_master_browser.DiscoveryHandler;
+import com.github.ros_java.android_extras.ros_master_browser.DiscoverySetup;
+import com.github.ros_java.android_extras.ros_master_browser.Logger;
 
 // adb logcat System.out:I *:S
 // adb logcat zeroconf:I *:S
