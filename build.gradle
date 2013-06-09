@@ -19,7 +19,7 @@ task wrapper(type: Wrapper) {
 }
 
 allprojects {
-  group 'ros.android_extras'
+  group 'com.github.ros_java.android_extras'
   version = '0.1.0'
 }
 

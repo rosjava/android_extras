@@ -8,8 +8,8 @@ import java.util.Iterator;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
-import com.github.ros_java.jmdns.DiscoveredService;
-import com.github.ros_java.jmdns.ZeroconfDiscoveryHandler;
+import com.github.ros_java.zeroconf_jmdns_suite.jmdns.DiscoveredService;
+import com.github.ros_java.zeroconf_jmdns_suite.jmdns.ZeroconfDiscoveryHandler;
 
 /**
  * This class is the callback handler for services being listened for
