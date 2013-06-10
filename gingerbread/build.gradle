@@ -14,7 +14,14 @@
  * the License.
  */
 
-/*archivesBaseName = "android_extras_gingerbread"*/
+/* 
+  Gradle's maven plugin doesn't respect full artifact names yet, so
+  when another repo downloads this aar, it will have a conflict if the
+  basename is also gingerbread.aar. If this happens, switch the basename
+  here until such a day that the maven plugin supports the full package name.
+
+  archivesBaseName = "android_extras_gingerbread"
+*/
 
 apply plugin: 'android-library'
 
