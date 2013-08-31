@@ -1,4 +1,4 @@
-package com.github.ros_java.android_extras.ros_master_browser;
+package com.github.rosjava.android_extras.ros_master_browser;
 
 import java.util.ArrayList;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.ros_java.android_extras.ros_master_browser.R;
-import com.github.ros_java.zeroconf_jmdns_suite.jmdns.DiscoveredService;
+import com.github.rosjava.android_extras.ros_master_browser.R;
+import com.github.rosjava.zeroconf_jmdns_suite.jmdns.DiscoveredService;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;
