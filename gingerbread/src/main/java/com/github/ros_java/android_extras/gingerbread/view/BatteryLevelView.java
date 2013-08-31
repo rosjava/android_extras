@@ -1,6 +1,6 @@
-package com.github.ros_java.android_extras.gingerbread.view;
+package com.github.rosjava.android_extras.gingerbread.view;
 
-import com.github.ros_java.android_extras.gingerbread.R;
+import com.github.rosjava.android_extras.gingerbread.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
