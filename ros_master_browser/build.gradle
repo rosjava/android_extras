@@ -15,14 +15,13 @@
  */
 
 dependencies {
-  compile 'com.github.rosjava.zeroconf_jmdns_suite:jmdns:0.1.0'
-  compile 'ros.android_core:android_gingerbread_mr1:0.0.0-SNAPSHOT'
+  compile 'com.github.rosjava.zeroconf_jmdns_suite:jmdns:0.1.+'
+  compile 'org.ros.android_core:android_gingerbread_mr1:0.1.+'
 }
 
 apply plugin: 'android'
   
 android {
     compileSdkVersion 10
-    buildToolsVersion androidBuildToolsVersion
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Daniel Stonier.
+ * Copyright (C) 2011 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,10 +13,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-apply plugin: 'android-library'
-  
-android {
-    compileSdkVersion 10
+
+dependencies {
+  compile 'org.ros.android_core:android_gingerbread_mr1:0.1.+'
+  compile 'org.ros.android_core:android_acm_serial:0.1.+'
+  compile 'com.github.rosjava.rosjava_extras:hokuyo:0.1.+'
 }
 
+apply plugin: 'android'
 
+android {
+  compileSdkVersion 13
+}

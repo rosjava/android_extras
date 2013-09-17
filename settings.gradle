@@ -17,3 +17,4 @@
 include 'zxing'
 include 'ros_master_browser'
 include 'gingerbread'
+include 'android_tutorial_hokuyo'
