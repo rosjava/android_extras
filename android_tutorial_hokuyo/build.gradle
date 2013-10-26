@@ -23,5 +23,5 @@ dependencies {
 apply plugin: 'android'
 
 android {
-  compileSdkVersion 13
+  compileSdkVersion 15
 }
