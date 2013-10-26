@@ -15,9 +15,9 @@
  */
 
 dependencies {
-  compile 'org.ros.android_core:android_gingerbread_mr1:0.1.+'
-  compile 'org.ros.android_core:android_acm_serial:0.1.+'
-  compile 'com.github.rosjava.rosjava_extras:hokuyo:0.1.+'
+  compile 'org.ros.android_core:android_gingerbread_mr1:[0.1,)'
+  compile 'org.ros.android_core:android_acm_serial:[0.1,)'
+  compile 'com.github.rosjava.rosjava_extras:hokuyo:[0.1,)'
 }
 
 apply plugin: 'android'
