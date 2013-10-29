@@ -15,8 +15,8 @@
  */
 
 dependencies {
-  compile 'com.github.rosjava.zeroconf_jmdns_suite:jmdns:[0.1,)'
-  compile 'org.ros.android_core:android_gingerbread_mr1:[0.1,)'
+  compile 'com.github.rosjava.zeroconf_jmdns_suite:jmdns:[0.1,0.2)'
+  compile 'org.ros.android_core:android_gingerbread_mr1:[0.1,0.2)'
 }
 
 apply plugin: 'android'
