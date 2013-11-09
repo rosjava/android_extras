@@ -15,13 +15,13 @@
  */
 
 dependencies {
-  compile 'org.ros.android_core:android_gingerbread_mr1:0.1.+'
-  compile 'org.ros.android_core:android_acm_serial:0.1.+'
-  compile 'com.github.rosjava.rosjava_extras:hokuyo:0.1.+'
+  compile 'org.ros.android_core:android_10:[0.2,)'
+  compile 'org.ros.android_core:android_acm_serial:[0.2,)'
+  compile 'com.github.rosjava.rosjava_extras:hokuyo:[0.2,)'
 }
 
 apply plugin: 'android'
 
 android {
-  compileSdkVersion 13
+  compileSdkVersion 15
 }
