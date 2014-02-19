@@ -31,4 +31,16 @@ allprojects {
 
 subprojects {
   apply plugin: "ros-android"
+
+  afterEvaluate { project ->
+    // Change the layout of Android projects to be compatible with Eclipse.
+    android {
+      // Exclude a few files that are duplicated across our dependencies and
+      // prevent packaging Android applications.
+      packagingOptions {
+        exclude "META-INF/LICENSE.txt"
+        exclude "META-INF/NOTICE.txt"
+      }
+    }
+  }
 }
