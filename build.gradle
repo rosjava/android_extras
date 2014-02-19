@@ -15,35 +15,20 @@
  */
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
+  gradleVersion = "1.10"
 }
 
 buildscript {
-    def rosMavenPath = "$System.env.ROS_MAVEN_PATH".split(':').collect { 'file://' + it }
-    def rosMavenRepository = "$System.env.ROS_MAVEN_REPOSITORY"
-    repositories {
-        rosMavenPath.each { p ->
-            maven {
-                url p
-            }
-        }
-        mavenLocal()
-        maven {
-            url rosMavenRepository
-        }
-    }
-    dependencies {
-        classpath group: 'org.ros.rosjava_bootstrap', name: 'gradle_plugins', version: '[0.2,0.3)'
-    }
+  apply from: "https://github.com/rosjava/android_core/raw/master/buildscript.gradle"
 }
 
-apply plugin: 'catkin'
+apply plugin: "catkin"
 
 allprojects {
-    group 'com.github.rosjava.android_extras'
-    version = project.catkin.pkg.version
+  group "com.github.rosjava.android_extras"
+  version = project.catkin.pkg.version
 }
 
 subprojects {
-    apply plugin: 'ros-android'
+  apply plugin: "ros-android"
 }
