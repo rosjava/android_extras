@@ -23,7 +23,7 @@
   archivesBaseName = "android_extras_gingerbread"
 */
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 10
