@@ -44,3 +44,6 @@ subprojects {
     }
   }
 }
+
+defaultTasks 'assembleRelease', 'uploadArchives'
+

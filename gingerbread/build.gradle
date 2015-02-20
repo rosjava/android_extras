@@ -23,9 +23,16 @@
   archivesBaseName = "android_extras_gingerbread"
 */
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 10
+  compileSdkVersion 10
+
+  defaultConfig {
+    minSdkVersion 10
+    targetSdkVersion 10
+    versionCode 1
+    versionName "1.0"
+  }
 }
 

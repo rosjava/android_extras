@@ -13,10 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-apply plugin: 'android-library'
-  
+apply plugin: 'com.android.library'
+
 android {
-    compileSdkVersion 10
+  compileSdkVersion 10
+
+  defaultConfig {
+    minSdkVersion 10
+    targetSdkVersion 10
+    versionCode 1
+    versionName "1.0"
+  }
 }
 
 
