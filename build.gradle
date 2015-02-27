@@ -15,27 +15,16 @@
  */
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "2.2.1"
+  gradleVersion = "2.2.1"
 }
 
 buildscript {
-    apply from: "https://github.com/talregev/rosjava_mvn_repo/raw/master/buildscript.gradle"
-    //noinspection GroovyAssignabilityCheck
-    dependencies {
-        classpath "com.android.tools.build:gradle:1.0.1"
-    }
+  apply from: "https://github.com/rosjava/android_core/raw/indigo/buildscript.gradle"
 }
 
 apply plugin: "catkin"
 
 allprojects {
-
-    repositories {
-        maven {
-            url "https://github.com/talregev/rosjava_mvn_repo/raw/master"
-        }
-    }
-
   group "com.github.rosjava.android_extras"
   version = project.catkin.pkg.version
 }
@@ -57,3 +46,4 @@ subprojects {
 }
 
 defaultTasks 'assembleRelease', 'uploadArchives'
+

@@ -14,7 +14,7 @@
  * the License.
  */
 
-include 'zxing'
+include 'android_tutorial_hokuyo'
 include 'ros_master_browser'
 include 'gingerbread'
-include 'android_tutorial_hokuyo'
+include 'zxing'
