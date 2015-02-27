@@ -3,7 +3,7 @@
     xmlns:tool="http://schemas.android.com/tools"
     package="com.github.rosjava.android_extras.android_tutorial_hokuyo"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0" >
 
     <uses-feature android:name="android.hardware.usb.host" />
 

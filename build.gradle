@@ -46,3 +46,4 @@ subprojects {
 }
 
 defaultTasks 'assembleRelease', 'uploadArchives'
+
