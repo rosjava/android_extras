@@ -5,7 +5,12 @@
       android:versionCode="1"
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="10" />
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" tools:replace="icon">
+    <application 
+        android:label="@string/app_name"
+        android:icon="@mipmap/icon"
+        android:allowBackup="true"
+        tools:replace="icon"
+        >
         <activity android:name="MasterBrowser"
                   android:label="@string/app_name">
 

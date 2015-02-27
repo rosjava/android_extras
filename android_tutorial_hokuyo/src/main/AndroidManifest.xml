@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/tools"
     package="com.github.rosjava.android_extras.android_tutorial_hokuyo"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0" >
 
     <uses-feature android:name="android.hardware.usb.host" />
 
@@ -14,8 +13,8 @@
 
     <application
         android:icon="@mipmap/icon"
-        tool:replace="android:icon"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:allowBackup="true">
         <activity
             android:name="MainActivity"
             android:label="@string/app_name"
