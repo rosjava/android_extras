@@ -14,12 +14,13 @@
  * the License.
  */
 
+apply plugin: "ros-android"
+apply plugin: 'com.android.application'
+
 dependencies {
   compile 'com.github.rosjava.zeroconf_jmdns_suite:jmdns:[0.2,0.3)'
   compile 'org.ros.android_core:android_10:[0.2,0.3)'
 }
-
-apply plugin: 'com.android.application'
   
 android {
     compileSdkVersion 10
