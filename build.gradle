@@ -109,6 +109,9 @@ subprojects {
                     /* https://github.com/rosjava/android_core/issues/194 */
                     exclude "META-INF/LICENSE.txt"
                     exclude "META-INF/NOTICE.txt"
+                    exclude 'META-INF/services/javax.annotation.processing.Processor'
+                    pickFirst  'META-INF/maven/org.bytedeco.javacpp-presets/opencv/pom.properties'
+                    pickFirst  'META-INF/maven/org.bytedeco.javacpp-presets/opencv/pom.xml'
                 }
             }
         }
