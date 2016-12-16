@@ -4,11 +4,13 @@
   <version>0.2.0</version>
   <description>
     Various additional and useful general packages, but not core.
+    Android cv_bridge is a bridge between ros image messages and opencv images.
   </description>
   <url type="website">http://ros.org/wiki/android_extras</url>
   <url type="repository">https://github.com/rosjava/android_extras</url>
   <url type="bugtracker">https://github.com/rosjava/android_extras/issues</url>
   <author email="d.stonier@gmail.com">Daniel Stonier</author>
+  <author email="tal.regev@gmail.com">Tal Regev</author>
   <maintainer email="d.stonier@gmail.com">Daniel Stonier</maintainer>
   <license>Apache 2.0</license>
 
