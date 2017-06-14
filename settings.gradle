@@ -18,3 +18,11 @@ include 'android_tutorial_hokuyo'
 include 'ros_master_browser'
 include 'gingerbread'
 include 'zxing'
+
+include "opencv"
+include "cv_bridge"
+
+include "android_tutorial_cv_bridge_Image"
+include "android_tutorial_cv_bridge_Image_javacv"
+include "android_tutorial_cv_bridge_CompressedImage"
+include "android_tutorial_cv_bridge_CompressedImage_javacv"
