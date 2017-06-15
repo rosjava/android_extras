@@ -35,11 +35,18 @@ subprojects {
   afterEvaluate { project ->
     // Change the layout of Android projects to be compatible with Eclipse.
     android {
+      compileSdkVersion 25
+
       // Exclude a few files that are duplicated across our dependencies and
       // prevent packaging Android applications.
       packagingOptions {
         exclude "META-INF/LICENSE.txt"
         exclude "META-INF/NOTICE.txt"
+
+        //from https://github.com/bytedeco/javacpp-presets/issues/220
+        exclude "META-INF/services/javax.annotation.processing.Processor"
+        pickFirst  "META-INF/maven/org.bytedeco.javacpp-presets/opencv/pom.properties"
+        pickFirst  "META-INF/maven/org.bytedeco.javacpp-presets/opencv/pom.xml"
       }
     }
   }

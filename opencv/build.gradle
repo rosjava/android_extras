@@ -1,0 +1,34 @@
+
+/**
+ *
+ * @author tal.regev@gmail.com (Tal Regev)
+ *
+ */
+apply plugin: "ros-android"
+apply plugin: "com.android.library"
+
+version "3.1.0"
+
+
+android {
+
+  defaultConfig {
+    minSdkVersion 10
+
+    versionCode 3100
+    versionName "3.1.0"
+  }
+
+  //noinspection GroovyAssignabilityCheck
+  sourceSets {
+    //noinspection GroovyAssignabilityCheck
+    main {
+      manifest.srcFile "AndroidManifest.xml"
+      java.srcDirs = ["src"]
+      resources.srcDirs = ["src"]
+      res.srcDirs = ["res"]
+      aidl.srcDirs = ["src"]
+    }
+  }
+}
+
