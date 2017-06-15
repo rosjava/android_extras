@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Forthcoming
------------
+0.3.1 (2017-06-15)
+------------------
  * add cv_bridge and cv_bridge javacv libraries with tutorial apps
  * Contributors: Tal Regev, Julian Cerruti
 
