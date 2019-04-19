@@ -2,6 +2,7 @@ package cv_bridge;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBufferOutputStream;
+import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -26,6 +27,9 @@ import std_msgs.Header;
 @SuppressWarnings("WeakerAccess")
 public class CvImage
 {
+    static {
+        OpenCVLoader.initDebug();
+    }
     static protected final String TAG = "cv_bridge::CvImage";
     public Header header;
     public Mat image = new Mat();
@@ -66,10 +70,13 @@ public class CvImage
         image.get(0, 0, imageInBytes);
         stream.write(imageInBytes);
 
+        ros_image.setData(stream.buffer());
+
         //noinspection UnusedAssignment
         imageInBytes = null;
+        //noinspection UnusedAssignment
+        stream       = null;
 
-        ros_image.setData(stream.buffer().copy());
         return ros_image;
     }
 
@@ -95,7 +102,13 @@ public class CvImage
         ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
         stream.write(buf.toArray());
 
-        ros_image.setData(stream.buffer().copy());
+        ros_image.setData(stream.buffer());
+
+        //noinspection UnusedAssignment
+        buf    = null;
+        //noinspection UnusedAssignment
+        stream = null;
+
         return ros_image;
     }
 
