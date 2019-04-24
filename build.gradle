@@ -35,7 +35,7 @@ subprojects {
   afterEvaluate { project ->
     // Change the layout of Android projects to be compatible with Eclipse.
     android {
-      compileSdkVersion 25
+      compileSdkVersion 28
 
       // Exclude a few files that are duplicated across our dependencies and
       // prevent packaging Android applications.

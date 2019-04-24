@@ -15,7 +15,6 @@
  */
 
 dependencies {
-  compile 'org.ros.android_core:android_10:[0.3,0.4)'
   compile 'org.ros.android_core:android_acm_serial:[0.3,0.4)'
   compile 'com.github.rosjava.rosjava_extras:hokuyo:[0.3,0.4)'
 }
@@ -23,5 +22,9 @@ dependencies {
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
+  defaultConfig {
+    minSdkVersion 16
+    //noinspection OldTargetApi
+    targetSdkVersion 28
+  }
 }
