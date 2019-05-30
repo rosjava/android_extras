@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2013 Daniel Stonier
+ * Copyright (c) 2015, Tal Regev
+ * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,16 +15,18 @@
  * the License.
  */
 
-include 'android_tutorial_hokuyo'
-include 'ros_master_browser'
-include 'gingerbread'
-include 'zxing'
+apply plugin: "com.android.application"
 
-include "cv_bridge"
+//noinspection GroovyAssignabilityCheck
+dependencies {
+    compile 'org.ros.android_core:android_core_components:[0.4,0.5)'
+    compile group: 'org.opencv', name: 'openCVLibrary', version: '3.4.0'
+}
 
-include "android_tutorial_cv_bridge_Image"
-include "android_tutorial_cv_bridge_Image_javacv"
-include "android_tutorial_cv_bridge_CompressedImage"
-include "android_tutorial_cv_bridge_CompressedImage_javacv"
-include "android_all_sensors_driver"
-
+android {
+    defaultConfig {
+        applicationId "org.ros.android.android_all_sensors_driver"
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+}
